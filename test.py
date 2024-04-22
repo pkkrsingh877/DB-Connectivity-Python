@@ -5,13 +5,15 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-db = database.connect(
+connection = database.connect(
     host= os.getenv('HOST'),
     port= os.getenv('PORT'),
     user= os.getenv('USER'),
     password= os.getenv('PASSWORD'),
     database= os.getenv('DATABASE')
 )
+
+cursor = connection.cursor()
 
 print("#"*30)
 
@@ -24,7 +26,22 @@ print('''
 ''')
 
 def register():
-    pass
+    name = input("Enter Name: ")
+    enrollment = input("Enter Enrollment Number: ")
+    college = input("Enter College Name: ")
+    branch = input("Enter Branch Name: ")
+    contact = input("Enter Contact Number: ")
+
+    query = "INSERT INTO student (name, enrollment, college, branch, contact) VALUES (%s, %s, %s, %s, %s)"
+    data = (name, enrollment, college, branch, contact)
+    cursor.execute(query, data)
+    print("Registration Complete...")
+
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+
 
 def login():
     pass
