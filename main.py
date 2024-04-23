@@ -6,12 +6,12 @@ import string
 # Top Level Functions/Modules
 from modules.register import register
 from modules.login import login
-from modules.attempt_quiz import attempt_quiz
-from modules.result import result
 
 # Global variables
 connection = None
 cursor = None
+is_logged_in = False
+username_of_logged_in_user = ""
 
 def exitt():
     global connection, cursor
@@ -65,27 +65,21 @@ def main():
 
     cursor = connection.cursor()
 
-    print("#"*30)
-
+    print("*"*30)
     print('''
         1. Register
         2. Login
-        3. List Students
-        4. List Student
-        5. Exit
+        3. Exit
     ''')
+    print("*"*30)
 
     choice = input("What Operation do you want to perform: ")
 
     if choice == '1':
         register(connection, cursor)
     elif choice == '2':
-        login()
+        login(connection, cursor, is_logged_in, username_of_logged_in_user)
     elif choice == '3':
-        attempt_quiz()
-    elif choice == '4':
-        result()
-    elif choice == '5':
         exitt()
     else:
         print('Invalid Option!')
