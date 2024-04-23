@@ -2,30 +2,12 @@ import mysql.connector as database
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
-
-connection = database.connect(
-    host= os.getenv('HOST'),
-    port= os.getenv('PORT'),
-    user= os.getenv('USER'),
-    password= os.getenv('PASSWORD'),
-    database= os.getenv('DATABASE')
-)
-
-cursor = connection.cursor()
-
-print("#"*30)
-
-print('''
-      1. Register
-      2. Login
-      3. List Students
-      4. List Student
-      5. Exit
-''')
+# Global variables
+connection = None
+cursor = None
 
 def register():
+    global connection, cursor
     print("*"*30)
     print("REGISTER NEW STUDENT")
     print("*"*30)
@@ -34,10 +16,11 @@ def register():
     college = input("Enter College Name: ")
     branch = input("Enter Branch Name: ")
     contact = input("Enter Contact Number: ")
+    password = input("Enter Password: ")
     print("*"*30)
 
-    query = "INSERT INTO student (name, enrollment, college, branch, contact) VALUES (%s, %s, %s, %s, %s)"
-    data = (name, enrollment, college, branch, contact)
+    query = "INSERT INTO student (name, enrollment, college, branch, contact, password) VALUES (%s, %s, %s, %s, %s, %s)"
+    data = (name, enrollment, college, branch, contact, password)
     cursor.execute(query, data)
     print("Registration Complete...")
     exitt()
@@ -46,8 +29,8 @@ def login():
     pass
 
 def listStudents():
+    global cursor
     query = "SELECT name, enrollment FROM student;"
-
     cursor.execute(query)
 
     rows = cursor.fetchall() # Store previous query's data in rows
@@ -62,9 +45,9 @@ def listStudents():
     exitt()
 
 def listStudent():
+    global cursor
     enrollment = input('Enter Enrollment Number: ')
     query = "SELECT * FROM student WHERE enrollment = %s;"
-    
     cursor.execute(query, (enrollment,))
 
     row = cursor.fetchone() # Store previous query's data in row
@@ -80,25 +63,54 @@ def listStudent():
     exitt()
 
 def exitt():
+    global connection, cursor
     connection.commit()
     cursor.close()
     connection.close()
     print("*"*30)
-    print("Exitting The Program...")
+    print("Exiting The Program...")
     print("*"*30)
     exit()
 
-choice = input("What Operation do you want to perform: ")
+def main():
+    global connection, cursor
+    # Load environment variables from .env file
+    load_dotenv()
 
-if choice == '1':
-    register()
-elif choice == '2':
-    login()
-elif choice == '3':
-    listStudents()
-elif choice == '4':
-    listStudent()
-elif choice == '5':
-    exitt()
-else:
-    print('Invalid Option!')
+    connection = database.connect(
+        host= os.getenv('HOST'),
+        port= os.getenv('PORT'),
+        user= os.getenv('USER'),
+        password= os.getenv('PASSWORD'),
+        database= os.getenv('DATABASE')
+    )
+
+    cursor = connection.cursor()
+
+    print("#"*30)
+
+    print('''
+        1. Register
+        2. Login
+        3. List Students
+        4. List Student
+        5. Exit
+    ''')
+
+    choice = input("What Operation do you want to perform: ")
+
+    if choice == '1':
+        register()
+    elif choice == '2':
+        login()
+    elif choice == '3':
+        listStudents()
+    elif choice == '4':
+        listStudent()
+    elif choice == '5':
+        exitt()
+    else:
+        print('Invalid Option!')
+
+if __name__ == '__main__':
+    main()
