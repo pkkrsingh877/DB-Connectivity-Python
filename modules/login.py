@@ -15,8 +15,8 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
         while not is_logged_in:
             password = input("Enter Password: ") 
 
-            query = "SELECT * FROM student WHERE password = %s"
-            data = (password,)
+            query = "SELECT * FROM student WHERE enrollment = %s AND password = %s"
+            data = (username, password,)
             cursor.execute(query,data)
             password_rows = cursor.fetchall()
             if password_rows:
