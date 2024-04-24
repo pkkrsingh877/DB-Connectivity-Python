@@ -92,9 +92,7 @@ TOP LEVEL FEATURE
 
 1. REGISTER
 2. LOGIN
-3. ATTEMPT QUIZ
-4. RESULT
-5. EXIT
+3. EXIT
 
 WITHIN LOGIN FEATURE
 
@@ -102,6 +100,9 @@ WITHIN LOGIN FEATURE
 2. View Result
 3. Show Profile
 4. Update Profile
+5. Logout
+
+ADDITIONAL FEATURES
 
 WAP validate 
 '''

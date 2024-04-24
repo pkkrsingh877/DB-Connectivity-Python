@@ -6,7 +6,7 @@ from modules.update_profile import update_profile
 def login(connection, cursor, is_logged_in, username_of_logged_in_user):
     username = input("Enter Username: ") #enrollment
 
-    query = "SELECT * FROM student WHERE enrollment = %s;"
+    query = "SELECT * FROM user WHERE enrollment = %s;"
     data = (username,)
     cursor.execute(query,data)
     rows = cursor.fetchall()
@@ -15,7 +15,7 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
         while not is_logged_in:
             password = input("Enter Password: ") 
 
-            query = "SELECT * FROM student WHERE enrollment = %s AND password = %s"
+            query = "SELECT * FROM user WHERE enrollment = %s AND password = %s"
             data = (username, password,)
             cursor.execute(query,data)
             password_rows = cursor.fetchall()

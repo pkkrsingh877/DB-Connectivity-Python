@@ -1,12 +1,12 @@
 def update_profile(connection, cursor, is_logged_in, username_of_logged_in_user):
-    query = "SELECT * FROM student WHERE enrollment = %s;"
+    query = "SELECT * FROM user WHERE enrollment = %s;"
     cursor.execute(query, (username_of_logged_in_user,))
 
     row = cursor.fetchone() # Store previous query's data in row
     if row:
         name, enrollment, college, branch, contact = row[:5]
         print("*"*30)
-        print("STUDENT DETAILS")
+        print("USER DETAILS")
         print("*"*30)
         print(f"Name: {name}\nEnrollment Number: {enrollment}\nCollege Name: {college}\nBranch Name: {branch}\nContact Number: {contact}")
         print("*"*30)
@@ -24,32 +24,32 @@ def update_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
         updated_value = input("Enter updated data:")
 
         if choice == '1':
-            query = "UPDATE student SET name = %s WHERE enrollment = %s;"
+            query = "UPDATE user SET name = %s WHERE enrollment = %s;"
             data = (updated_value, username_of_logged_in_user,)
             cursor.execute(query,data)
             connection.commit()
         elif choice == '2':
-            query = "UPDATE student SET enrollment = %s WHERE enrollment = %s;"
+            query = "UPDATE user SET enrollment = %s WHERE enrollment = %s;"
             data = (updated_value, username_of_logged_in_user,)
             cursor.execute(query,data)
             connection.commit()
         elif choice == '3':
-            query = "UPDATE student SET password = %s WHERE enrollment = %s;"
+            query = "UPDATE user SET password = %s WHERE enrollment = %s;"
             data = (updated_value, username_of_logged_in_user,)
             cursor.execute(query,data)
             connection.commit()
         elif choice == '4':
-            query = "UPDATE student SET college = %s WHERE enrollment = %s;"
+            query = "UPDATE user SET college = %s WHERE enrollment = %s;"
             data = (updated_value, username_of_logged_in_user,)
             cursor.execute(query,data)
             connection.commit()
         elif choice == '5':
-            query = "UPDATE student SET branch = %s WHERE enrollment = %s;"
+            query = "UPDATE user SET branch = %s WHERE enrollment = %s;"
             data = (updated_value, username_of_logged_in_user,)
             cursor.execute(query,data)
             connection.commit()
         elif choice == '6':
-            query = "UPDATE student SET contact = %s WHERE enrollment = %s;"
+            query = "UPDATE user SET contact = %s WHERE enrollment = %s;"
             data = (updated_value, username_of_logged_in_user,)
             cursor.execute(query,data)
             connection.commit()

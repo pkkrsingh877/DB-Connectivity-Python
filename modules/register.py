@@ -1,6 +1,6 @@
 def register(connection, cursor):
     print("*"*30)
-    print("REGISTER NEW STUDENT")
+    print("REGISTER NEW USER...")
     print("*"*30)
     name = input("Enter Name: ")
     enrollment = input("Enter Enrollment Number: ")
@@ -11,7 +11,7 @@ def register(connection, cursor):
 
     print("*"*30)
 
-    query = "INSERT INTO student (name, enrollment, college, branch, contact, password) VALUES (%s, %s, %s, %s, %s, %s)"
+    query = "INSERT INTO user (name, enrollment, college, branch, contact, password) VALUES (%s, %s, %s, %s, %s, %s)"
     data = (name, enrollment, college, branch, contact, password)
     cursor.execute(query, data)
     connection.commit()
