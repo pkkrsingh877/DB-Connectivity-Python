@@ -46,7 +46,7 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
                 elif choice == '2':
                     result()
                 elif choice == '3':
-                    show_profile()
+                    show_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '4':
                     update_profile()
                 elif choice == '5':
