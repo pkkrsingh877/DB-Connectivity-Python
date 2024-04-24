@@ -48,10 +48,14 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
                 elif choice == '3':
                     show_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '4':
-                    update_profile()
+                    update_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '5':
                     username_of_logged_in_user = ""
                     is_logged_in = False
+                    print("*"*30)
+                    print("User Successfully Logged Out")
+                    print("*"*30)
+                    return # Return to main function as user opted to logout
                 else:
                     print('Invalid Option!')
                 print("*"*30)
