@@ -59,23 +59,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-'''
-TOP LEVEL FEATURE
-
-1. REGISTER
-2. LOGIN
-3. EXIT
-
-WITHIN LOGIN FEATURE
-
-1. Attempt Quiz
-2. View Result
-3. Show Profile
-4. Update Profile
-5. Logout
-
-ADDITIONAL FEATURES
-
-WAP validate 
-'''
