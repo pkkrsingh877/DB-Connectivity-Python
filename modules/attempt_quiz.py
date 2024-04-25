@@ -1,3 +1,5 @@
+from modules.result import result
+
 def attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user):
     percentage = 0
     total = 0
@@ -42,4 +44,6 @@ def attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user):
     data = (tag, correct, incorrect, percentage, total, student_id,)
     cursor.execute(query, data)
     connection.commit()
+
+    result(connection, cursor, is_logged_in, username_of_logged_in_user)
 

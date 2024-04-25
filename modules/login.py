@@ -44,7 +44,7 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
                 if choice == '1':
                     attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '2':
-                    result()
+                    result(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '3':
                     show_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '4':
