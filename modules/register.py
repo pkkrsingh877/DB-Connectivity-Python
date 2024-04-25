@@ -1,6 +1,12 @@
+import mysql.connector as database
+
+from config import config
 from modules.validate_password import validate_password
 
-def register(connection, cursor):
+def register():
+    connection = database.connect(**config)
+    cursor = connection.cursor()
+    
     valid_password = False
     print("*"*30)
     print("REGISTER NEW USER...")

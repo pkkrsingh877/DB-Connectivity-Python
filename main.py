@@ -1,7 +1,7 @@
 import mysql.connector as database
 import os
 from dotenv import load_dotenv
-import string
+from config import config
 
 # Top Level Functions/Modules
 from modules.register import register
@@ -28,13 +28,7 @@ def main():
     # Load environment variables from .env file
     load_dotenv()
 
-    connection = database.connect(
-        host= os.getenv('HOST'),
-        port= os.getenv('PORT'),
-        user= os.getenv('USER'),
-        password= os.getenv('PASSWORD'),
-        database= os.getenv('DATABASE')
-    )
+    connection = database.connect(**config)
 
     cursor = connection.cursor()
 
@@ -49,7 +43,7 @@ def main():
     choice = input("What Operation do you want to perform: ")
 
     if choice == '1':
-        register(connection, cursor)
+        register()
     elif choice == '2':
         login(connection, cursor, is_logged_in, username_of_logged_in_user)
     elif choice == '3':
