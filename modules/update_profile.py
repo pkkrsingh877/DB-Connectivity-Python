@@ -1,4 +1,11 @@
-def update_profile(connection, cursor, is_logged_in, username_of_logged_in_user):
+import mysql.connector as database
+
+from config import config
+
+def update_profile(is_logged_in, username_of_logged_in_user):
+    connection = database.connect(**config)
+    cursor = connection.cursor()
+
     query = "SELECT * FROM user WHERE enrollment = %s;"
     cursor.execute(query, (username_of_logged_in_user,))
 
@@ -57,3 +64,4 @@ def update_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
             print("Invalid Choice!")
         print("*"*30)
         
+    connection.close()

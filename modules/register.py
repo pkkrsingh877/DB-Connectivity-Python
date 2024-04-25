@@ -6,7 +6,7 @@ from modules.validate_password import validate_password
 def register():
     connection = database.connect(**config)
     cursor = connection.cursor()
-    
+
     valid_password = False
     print("*"*30)
     print("REGISTER NEW USER...")
@@ -30,4 +30,5 @@ def register():
     data = (name, enrollment, college, branch, contact, password)
     cursor.execute(query, data)
     connection.commit()
+    connection.close()
     print("Registration Complete...")

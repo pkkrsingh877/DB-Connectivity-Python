@@ -8,8 +8,6 @@ from modules.register import register
 from modules.login import login
 
 # Global variables
-connection = None
-cursor = None
 is_logged_in = False
 username_of_logged_in_user = ""
 
@@ -24,13 +22,10 @@ def exitt():
     exit()
 
 def main():
-    global connection, cursor
     # Load environment variables from .env file
     load_dotenv()
 
     connection = database.connect(**config)
-
-    cursor = connection.cursor()
 
     print("*"*30)
     print('''
@@ -45,7 +40,7 @@ def main():
     if choice == '1':
         register()
     elif choice == '2':
-        login(connection, cursor, is_logged_in, username_of_logged_in_user)
+        login(is_logged_in, username_of_logged_in_user)
     elif choice == '3':
         exitt()
     else:

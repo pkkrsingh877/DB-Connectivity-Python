@@ -1,6 +1,12 @@
+import mysql.connector as database
+
+from config import config
 from modules.result import result
 
-def attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user):
+def attempt_quiz(is_logged_in, username_of_logged_in_user):
+    connection = database.connect(**config)
+    cursor = connection.cursor()
+
     percentage = 0
     total = 0
     correct = 0 
@@ -42,6 +48,7 @@ def attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user):
     data = (tag, correct, incorrect, percentage, total, student_id,)
     cursor.execute(query, data)
     connection.commit()
+    connection.close()
 
-    result(connection, cursor, is_logged_in, username_of_logged_in_user)
+    result(is_logged_in, username_of_logged_in_user)
 

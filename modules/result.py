@@ -1,4 +1,10 @@
-def result(connection, cursor, is_logged_in, username_of_logged_in_user):
+import mysql.connector as database
+
+from config import config
+
+def result(is_logged_in, username_of_logged_in_user):
+    connection = database.connect(**config)
+    cursor = connection.cursor()
 
     query = "SELECT id FROM user WHERE enrollment = %s"
     user_data = (username_of_logged_in_user,)

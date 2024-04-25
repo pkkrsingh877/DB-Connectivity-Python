@@ -1,9 +1,15 @@
+import mysql.connector as database
+
+from config import config
 from modules.attempt_quiz import attempt_quiz
 from modules.result import result
 from modules.show_profile import show_profile
 from modules.update_profile import update_profile
 
-def login(connection, cursor, is_logged_in, username_of_logged_in_user):
+def login(is_logged_in, username_of_logged_in_user):
+    connection = database.connect(**config)
+    cursor = connection.cursor()
+
     username = input("Enter Username: ") #enrollment
 
     query = "SELECT * FROM user WHERE enrollment = %s;"
@@ -42,13 +48,13 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
                 choice = input("What Operation do you want to perform: ")
 
                 if choice == '1':
-                    attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user)
+                    attempt_quiz(is_logged_in, username_of_logged_in_user)
                 elif choice == '2':
-                    result(connection, cursor, is_logged_in, username_of_logged_in_user)
+                    result(is_logged_in, username_of_logged_in_user)
                 elif choice == '3':
-                    show_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
+                    show_profile(is_logged_in, username_of_logged_in_user)
                 elif choice == '4':
-                    update_profile(connection, cursor, is_logged_in, username_of_logged_in_user)
+                    update_profile(is_logged_in, username_of_logged_in_user)
                 elif choice == '5':
                     username_of_logged_in_user = ""
                     is_logged_in = False
@@ -61,3 +67,4 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
                 print("*"*30)
             else:
                 print("Incorrect Password!")
+    connection.close()
