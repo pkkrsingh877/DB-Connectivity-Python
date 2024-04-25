@@ -10,7 +10,6 @@ def attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user):
     query = "SELECT * FROM quiz_question WHERE tag = 'HTML' ORDER BY RAND() LIMIT 5"
     cursor.execute(query)
     rows = cursor.fetchall()
-    print(rows)
 
     for row in rows:
         id, question, option1, option2, option3, option4, correct_option, tag = row[:8]
@@ -35,7 +34,6 @@ def attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user):
     data = (username_of_logged_in_user,)
     cursor.execute(query, data)
     row = cursor.fetchone()
-    print(row)
 
     if row:
         student_id = row[5]
