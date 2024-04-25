@@ -26,10 +26,5 @@ def validate_password(password):
     
     if isUppercase and isLowercase and minLength and maxLength and isDigit and isSpecialCharacter:
         return True
-
-output = validate_password("1Abcdefgh@")
-
-if output == True:
-    print('Valid Password!')
-else:
-    print('Invalid Password!')
+    else:
+        return False

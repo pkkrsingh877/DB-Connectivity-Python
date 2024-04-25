@@ -42,7 +42,7 @@ def login(connection, cursor, is_logged_in, username_of_logged_in_user):
                 choice = input("What Operation do you want to perform: ")
 
                 if choice == '1':
-                    attempt_quiz()
+                    attempt_quiz(connection, cursor, is_logged_in, username_of_logged_in_user)
                 elif choice == '2':
                     result()
                 elif choice == '3':

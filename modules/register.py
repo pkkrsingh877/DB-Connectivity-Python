@@ -1,4 +1,7 @@
+from modules.validate_password import validate_password
+
 def register(connection, cursor):
+    valid_password = False
     print("*"*30)
     print("REGISTER NEW USER...")
     print("*"*30)
@@ -7,7 +10,13 @@ def register(connection, cursor):
     college = input("Enter College Name: ")
     branch = input("Enter Branch Name: ")
     contact = input("Enter Contact Number: ")
-    password = input("Enter Password: ")
+    while not valid_password:
+        password = input("Enter Password: ")
+        if validate_password(password):
+            break
+        print("Password should have atleast 1 uppercase, 1 lowercase, 1 special character, min length of 8 and max length of 20!")
+
+
 
     print("*"*30)
 
