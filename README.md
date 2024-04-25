@@ -1,6 +1,6 @@
 # Quiz Application
 
-This application is built using Python Language and MariaDB database. It is console based application.
+This application is built using Python Language and MariaDB database. It is a console based application.
 
 - Users can Register to create an account.
 - Users who have registerd can Login to their account.
@@ -17,3 +17,8 @@ It uses libraries like
     - os : for using dotenv-python
     - string : for string manipulation
 
+Things that I can add to overall improve this application
+
+    - I can use testing libraries to write test cases.
+    - I also need to rewrite the functions so they are purely independent elements and are testable.
+    - I can add some error handling especially if the errors are generated in Database operations.
