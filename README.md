@@ -37,10 +37,10 @@ Things that I can add to overall improve this application
 2. View Result
 3. Show Profile
 4. Update Profile
-5. Logout
+5. Display Leaderboard
+6. Logout
 
 ### ADDITIONAL FEATURES
 
 1. Validate Password
-2. Display Leaderboard
-3. Shuffle Options and update correct_option accordingly
+2. Shuffle Options and update correct_option accordingly [Not Implemented Yet]

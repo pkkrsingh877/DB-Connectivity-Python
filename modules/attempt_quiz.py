@@ -7,6 +7,13 @@ def attempt_quiz(is_logged_in, username_of_logged_in_user):
     connection = database.connect(**config)
     cursor = connection.cursor()
 
+    # print("1. HTML")
+    # print("2. CSS")
+    # print("3. JAVASCRIPT")
+    # print("4. PYTHON")
+    # user_input = ""
+    # user_input == input("Which test do you want to attempt: ")
+
     percentage = 0
     total = 0
     correct = 0 
@@ -14,6 +21,7 @@ def attempt_quiz(is_logged_in, username_of_logged_in_user):
     student_id = 1
     tag = ""
     query = "SELECT * FROM quiz_question WHERE tag = 'HTML' ORDER BY RAND() LIMIT 5"
+    # data = (user_input,)
     cursor.execute(query)
     rows = cursor.fetchall()
 
