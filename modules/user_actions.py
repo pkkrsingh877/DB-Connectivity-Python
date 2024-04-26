@@ -20,17 +20,13 @@ def user_actions(is_logged_in, username_of_logged_in_user):
 
     if choice == '1':
         attempt_quiz(is_logged_in, username_of_logged_in_user)
-        return False # Signifies that user has not logged out
     elif choice == '2':
         result(is_logged_in, username_of_logged_in_user)
-        return False # Signifies that user has not logged out
     elif choice == '3':
         print("View Profile Option selected")
         show_profile(is_logged_in, username_of_logged_in_user)
-        return False # Signifies that user has not logged out
     elif choice == '4':
         update_profile(is_logged_in, username_of_logged_in_user)
-        return False # Signifies that user has not logged out
     elif choice == '5':
         username_of_logged_in_user = ""
         is_logged_in = False

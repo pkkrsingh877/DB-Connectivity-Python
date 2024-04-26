@@ -35,4 +35,4 @@ def login(is_logged_in, username_of_logged_in_user):
                 print("Login Successful")
                 print("-"*30)
 
-                return user_actions(is_logged_in, username_of_logged_in_user)
+                return user_actions(is_logged_in, username_of_logged_in_user), username_of_logged_in_user

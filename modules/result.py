@@ -25,4 +25,4 @@ def result(is_logged_in, username_of_logged_in_user):
                 id, tag, correct, incorrect, percentage, total, student_id = result 
                 print(f"id: {id}\nCategory:{tag}\nCorrect Questions: {correct}\nIncorrect Question: {incorrect}\nTotal Questions: {total}\nPercentage: {percentage}\nStudent Id: {student_id}")
 
-    
+    return False

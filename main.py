@@ -20,7 +20,6 @@ def exitt():
     exit()
 
 def main():
-    global is_logged_in, username_of_logged_in_user
 
     keep_running = True
     # Load environment variables from .env file
@@ -40,9 +39,9 @@ def main():
         if choice == '1':
             register()
         elif choice == '2':
-            has_logged_out = login()
+            has_logged_out, username = login(is_logged_in, username_of_logged_in_user)
             while not has_logged_out:
-                has_logged_out = user_actions()
+                has_logged_out = user_actions(is_logged_in, username)
         elif choice == '3':
             exitt()
         else:

@@ -51,4 +51,5 @@ def attempt_quiz(is_logged_in, username_of_logged_in_user):
     connection.commit()
 
     result(is_logged_in, username_of_logged_in_user)
+    return False
 

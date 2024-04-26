@@ -21,3 +21,4 @@ def show_profile(is_logged_in, username_of_logged_in_user):
         print("USER DETAILS")
         print("-"*30)
         print(f"Name: {name}\nEnrollment Number: {enrollment}\nCollege Name: {college}\nBranch Name: {branch}\nContact Number: {contact}")
+    return False
