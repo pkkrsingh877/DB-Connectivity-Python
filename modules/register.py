@@ -8,9 +8,9 @@ def register():
     cursor = connection.cursor()
 
     valid_password = False
-    print("*"*30)
+    print("-"*30)
     print("REGISTER NEW USER...")
-    print("*"*30)
+    print("-"*30)
     name = input("Enter Name: ")
     enrollment = input("Enter Enrollment Number: ")
     college = input("Enter College Name: ")
@@ -24,7 +24,7 @@ def register():
 
 
 
-    print("*"*30)
+    print("-"*30)
 
     query = "INSERT INTO user (name, enrollment, college, branch, contact, password) VALUES (%s, %s, %s, %s, %s, %s)"
     data = (name, enrollment, college, branch, contact, password)

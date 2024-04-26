@@ -12,13 +12,13 @@ def update_profile(is_logged_in, username_of_logged_in_user):
     row = cursor.fetchone() # Store previous query's data in row
     if row:
         name, enrollment, college, branch, contact = row[:5]
-        print("*"*30)
+        print("-"*30)
         print("USER DETAILS")
-        print("*"*30)
+        print("-"*30)
         print(f"Name: {name}\nEnrollment Number: {enrollment}\nCollege Name: {college}\nBranch Name: {branch}\nContact Number: {contact}")
-        print("*"*30)
+        print("-"*30)
         print("UPDATE USER DETAILS...")
-        print("*"*30)
+        print("-"*30)
         print('''
             1. Name
             2. Username/Enrollment Number
@@ -62,6 +62,5 @@ def update_profile(is_logged_in, username_of_logged_in_user):
             connection.commit()
         else:
             print("Invalid Choice!")
-        print("*"*30)
+        print("-"*30)
         
-    connection.close()

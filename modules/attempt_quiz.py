@@ -4,6 +4,7 @@ from config import config
 from modules.result import result
 
 def attempt_quiz(is_logged_in, username_of_logged_in_user):
+    print(config)
     connection = database.connect(**config)
     cursor = connection.cursor()
 
@@ -19,9 +20,9 @@ def attempt_quiz(is_logged_in, username_of_logged_in_user):
 
     for row in rows:
         id, question, option1, option2, option3, option4, correct_option, tag = row[:8]
-        print("*"*30)
+        print("-"*30)
         print("Question")
-        print("*"*30)
+        print("-"*30)
         print(question)
         print(f"1. {option1}")
         print(f"2. {option2}")
@@ -48,7 +49,6 @@ def attempt_quiz(is_logged_in, username_of_logged_in_user):
     data = (tag, correct, incorrect, percentage, total, student_id,)
     cursor.execute(query, data)
     connection.commit()
-    connection.close()
 
     result(is_logged_in, username_of_logged_in_user)
 

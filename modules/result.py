@@ -19,9 +19,9 @@ def result(is_logged_in, username_of_logged_in_user):
 
         if quiz_result:
             for result in quiz_result:
-                print("*"*30)
+                print("-"*30)
                 print("RECORD")
-                print("*"*30)
+                print("-"*30)
                 id, tag, correct, incorrect, percentage, total, student_id = result 
                 print(f"id: {id}\nCategory:{tag}\nCorrect Questions: {correct}\nIncorrect Question: {incorrect}\nTotal Questions: {total}\nPercentage: {percentage}\nStudent Id: {student_id}")
 
